@@ -1,0 +1,49 @@
+/* ISC License
+ *
+ * Copyright (C) 2016 Olof Kindgren <olof.kindgren@gmail.com>
+ *
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+module wb_ram_generic
+  #(parameter depth=256,
+    parameter memfile = "")
+  (input clk,
+   input [3:0]	 we,
+   input [31:0]  din,
+   input [32-1:0] 	 waddr,
+   input [32-1:0] 	 raddr,
+   output reg [31:0] dout);
+
+   reg [31:0] 	 mem [0:depth-1] /* verilator public */;
+
+   localparam ADDR_BITS = $clog2(depth);
+
+   always @(posedge clk) begin
+      // Chỉ lấy các bit thấp cần thiết để truy cập mảng
+      if (we[0]) mem[waddr[ADDR_BITS-1:0]][7:0]   <= din[7:0];
+      if (we[1]) mem[waddr[ADDR_BITS-1:0]][15:8]  <= din[15:8];
+      if (we[2]) mem[waddr[ADDR_BITS-1:0]][23:16] <= din[23:16];
+      if (we[3]) mem[waddr[ADDR_BITS-1:0]][31:24] <= din[31:24];
+      
+      dout <= mem[raddr[ADDR_BITS-1:0]];
+end
+   generate
+      initial
+	if(memfile != "") begin
+	   $display("Preloading %m from %s", memfile);
+	   $readmemh(memfile, mem);
+	end
+   endgenerate
+
+endmodule

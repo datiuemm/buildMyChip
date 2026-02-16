@@ -1,0 +1,576 @@
+# //  Questa Sim-64
+# //  Version 2021.2_1 linux_x86_64 May 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+vlib work
+vlog *.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:42:31 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# ** Error: wb_ram.v(41): Cannot find `include file "wb_common.v" in directories:
+#     /home/datiuemm/questasim/ovm-2.1.2/../verilog_src/ovm-2.1.2/src, /home/datiuemm/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# End time: 15:42:31 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+vlog *.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:43:43 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 15:43:43 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 15:44:17 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last.$$'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr.$$'.
+#         Region: wb_ram_tb.dut
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=4, Warnings=0.
+# Error loading design
+# End time: 15:44:20 on Feb 16,2026, Elapsed time: 0:00:03
+# Errors: 4, Warnings: 0
+vlog *.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:48:47 on Feb 16,2026
+# vlog -reportprogress 300 wb_common.v wb_common_params.v wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# ** Error: ** while parsing file included at wb_common.v(20)
+# ** at wb_common_params.v(20): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
+# ** Error: wb_common_params.v(20): (vlog-13282) 'CLASSIC_CYCLE' already declared in this scope.
+# ** Error: wb_common_params.v(21): (vlog-13282) 'BURST_CYCLE' already declared in this scope.
+# ** Error: wb_common_params.v(23): (vlog-13282) 'READ' already declared in this scope.
+# ** Error: wb_common_params.v(24): (vlog-13282) 'WRITE' already declared in this scope.
+# ** Error: wb_common_params.v(27): (vlog-13282) 'CTI_CLASSIC' already declared in this scope.
+# ** Error: wb_common_params.v(28): (vlog-13282) 'CTI_CONST_BURST' already declared in this scope.
+# ** Error: wb_common_params.v(29): (vlog-13282) 'CTI_INC_BURST' already declared in this scope.
+# ** Error: wb_common_params.v(30): (vlog-13282) 'CTI_END_OF_BURST' already declared in this scope.
+# ** Error: wb_common_params.v(33): (vlog-13282) 'BTE_LINEAR' already declared in this scope.
+# ** Error: wb_common_params.v(34): (vlog-13282) 'BTE_WRAP_4' already declared in this scope.
+# ** Error: wb_common_params.v(35): (vlog-13282) 'BTE_WRAP_8' already declared in this scope.
+# ** Error: wb_common_params.v(36): (vlog-13282) 'BTE_WRAP_16' already declared in this scope.
+# End time: 15:48:47 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 13, Warnings: 0
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+vlog wb_common.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:50:00 on Feb 16,2026
+# vlog -reportprogress 300 wb_common.v 
+# ** Error: ** while parsing file included at wb_common.v(20)
+# ** at wb_common_params.v(20): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
+# End time: 15:50:00 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+vlog wb_common.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:51:16 on Feb 16,2026
+# vlog -reportprogress 300 wb_common.v 
+# ** Error: wb_common.v(20): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
+# End time: 15:51:16 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+vlog wb_common.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:52:19 on Feb 16,2026
+# vlog -reportprogress 300 wb_common.v 
+# ** Error: wb_common.v(21): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
+# End time: 15:52:20 on Feb 16,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+vlog wb_ram.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:53:41 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 15:53:41 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 15:53:48 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last.$$'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr.$$'.
+#         Region: wb_ram_tb.dut
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=4, Warnings=0.
+# Error loading design
+# End time: 15:53:48 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 15:54:26 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(52): (vopt-7063) Failed to find 'wb_is_last' in hierarchical name 'wb_is_last.$$'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr'.
+#         Region: wb_ram_tb.dut
+# ** Error (suppressible): wb_ram.v(55): (vopt-7063) Failed to find 'wb_next_adr' in hierarchical name 'wb_next_adr.$$'.
+#         Region: wb_ram_tb.dut
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=4, Warnings=0.
+# Error loading design
+# End time: 15:54:26 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vlog wb_ram.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:54:30 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 15:54:30 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 15:54:31 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+run -all
+# WRITE: Addr=0x00, Data=0xdeadbeef
+# WRITE: Addr=0x04, Data=0xcafebabe
+# WRITE: Addr=0x08, Data=0x12345678
+# READ:  Addr=0x00, Data=0xdeadbeef
+# READ:  Addr=0x04, Data=0xcafebabe
+# READ:  Addr=0x08, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+vlog wb_ram.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 15:59:37 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 15:59:37 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# End time: 15:59:42 on Feb 16,2026, Elapsed time: 0:05:11
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 15:59:42 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+run -all
+# WRITE: Addr=0x00, Data=0xdeadbeef
+# WRITE: Addr=0x04, Data=0xcafebabe
+# WRITE: Addr=0x08, Data=0x12345678
+# READ:  Addr=0x00, Data=0xdeadbeef
+# READ:  Addr=0x04, Data=0xcafebabe
+# READ:  Addr=0x08, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+vlog wb_ram.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:01:18 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:01:18 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# End time: 16:01:22 on Feb 16,2026, Elapsed time: 0:01:40
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 16:01:22 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+run -all
+# WRITE: Addr=0x00000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000100, Data=0xcafebabe
+# WRITE: Addr=0x00001000, Data=0x12345678
+# READ:  Addr=0x00000000, Data=0xdeadbeef
+# READ:  Addr=0x00000100, Data=0xcafebabe
+# READ:  Addr=0x00001000, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+run run.do
+# Invalid time value: run.do
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:07:42 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:07:42 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:07:42 on Feb 16,2026, Elapsed time: 0:06:20
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:07:42 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: wb_ram.v(79): Module 'wb_ram_generic' is not defined.
+#  For instance 'ram0' at path 'wb_ram_tb.dut'
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 13
+vlog wb_ram.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:08:10 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:08:10 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 16:07:42 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: wb_ram.v(79): Module 'wb_ram_generic' is not defined.
+#  For instance 'ram0' at path 'wb_ram_tb.dut'
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=0.
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 13
+vlog wb_ram.v wb_ram_generic.v wb_ram_tb.v
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:09:09 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:09:09 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc wb_ram_tb
+# vsim -voptargs="+acc" wb_ram_tb 
+# Start time: 16:07:42 on Feb 16,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+run -all
+# WRITE: Addr=0x00000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000100, Data=0xcafebabe
+# WRITE: Addr=0x00001000, Data=0x12345678
+# READ:  Addr=0x00000000, Data=0xdeadbeef
+# READ:  Addr=0x00000100, Data=0xcafebabe
+# READ:  Addr=0x00001000, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:38:43 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:38:43 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:38:43 on Feb 16,2026, Elapsed time: 0:31:01
+# Errors: 2, Warnings: 0
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:38:43 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (8) for port 'wb_adr_i'. The port definition is at: wb_ram.v(28).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut File: wb_ram_tb.v Line: 33
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000100, Data=0xcafebabe
+# WRITE: Addr=0x00001000, Data=0x12345678
+# READ:  Addr=0x00000000, Data=0xxxxxxxxx
+# READ:  Addr=0x00000100, Data=0xxxxxxxxx
+# READ:  Addr=0x00001000, Data=0xxxxxxxxx
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:44:57 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# ** Error: wb_ram_generic.v(46): (vlog-2730) Undefined variable: 'memfile'.
+# -- Compiling module wb_ram_tb
+# End time: 16:44:57 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /home/datiuemm/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 9
+# /home/datiuemm/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog wb_ram.v wb_ram_generic.v wb_ram_tb.v"
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:45:18 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:45:18 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:45:26 on Feb 16,2026, Elapsed time: 0:06:43
+# Errors: 1, Warnings: 3
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:45:26 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000100, Data=0xcafebabe
+# WRITE: Addr=0x00001000, Data=0x12345678
+# READ:  Addr=0x00000000, Data=0xxxxxxxxx
+# READ:  Addr=0x00000100, Data=0xxxxxxxxx
+# READ:  Addr=0x00001000, Data=0xxxxxxxxx
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:45:32 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:45:32 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:45:33 on Feb 16,2026, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 2
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:45:33 on Feb 16,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000100, Data=0xcafebabe
+# WRITE: Addr=0x00001000, Data=0x12345678
+# READ:  Addr=0x00000000, Data=0xxxxxxxxx
+# READ:  Addr=0x00000100, Data=0xxxxxxxxx
+# READ:  Addr=0x00001000, Data=0xxxxxxxxx
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:46:03 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:46:03 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:46:04 on Feb 16,2026, Elapsed time: 0:00:31
+# Errors: 0, Warnings: 2
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:46:04 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (32) for port 'wb_adr_i'. The port definition is at: wb_ram.v(28).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut File: wb_ram_tb.v Line: 33
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (6) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000000000000000000000000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000000000000000000010000000100, Data=0xcafebabe
+# WRITE: Addr=0x00010000000000000000000000001000, Data=0x12345678
+# READ:  Addr=0x00000000000000000000000000000000, Data=0xxxxxxxxx
+# READ:  Addr=0x00000000000000000000010000000100, Data=0xxxxxxxxx
+# READ:  Addr=0x00010000000000000000000000001000, Data=0xxxxxxxxx
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 16:50:03 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 16:50:03 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:50:04 on Feb 16,2026, Elapsed time: 0:04:00
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 16:50:04 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000000000000000000000000000, Data=0xdeadbeef
+# WRITE: Addr=0x00000000000000000000010000000100, Data=0xcafebabe
+# WRITE: Addr=0x00010000000000000000000000001000, Data=0x12345678
+# READ:  Addr=0x00000000000000000000000000000000, Data=0xdeadbeef
+# READ:  Addr=0x00000000000000000000010000000100, Data=0xcafebabe
+# READ:  Addr=0x00010000000000000000000000001000, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is datiuemm@datiuemm.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+# Start time: 17:03:54 on Feb 16,2026
+# vlog -reportprogress 300 wb_ram.v wb_ram_generic.v wb_ram_tb.v 
+# -- Compiling module wb_ram
+# -- Compiling module wb_ram_generic
+# -- Compiling module wb_ram_tb
+# 
+# Top level modules:
+# 	wb_ram_tb
+# End time: 17:03:54 on Feb 16,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:03:54 on Feb 16,2026, Elapsed time: 0:13:50
+# Errors: 0, Warnings: 2
+# vsim -voptargs="+acc" work.wb_ram_tb 
+# Start time: 17:03:54 on Feb 16,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.wb_ram_tb(fast)
+# Loading work.wb_ram(fast)
+# Loading work.wb_ram_generic(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'waddr'. The port definition is at: wb_ram_generic.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (30) for port 'raddr'. The port definition is at: wb_ram_generic.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /wb_ram_tb/dut/ram0 File: wb_ram.v Line: 79
+# WRITE: Addr=0x00000000000000000000000000000100, Data=0xdeadbeef
+# WRITE: Addr=0x00000000000000000000001011111010, Data=0xcafebabe
+# WRITE: Addr=0x00010000000000000000001000000100, Data=0x12345678
+# READ:  Addr=0x00000000000000000000000000000100, Data=0xdeadbeef
+# READ:  Addr=0x00000000000000000000001011111010, Data=0xcafebabe
+# READ:  Addr=0x00010000000000000000001000000100, Data=0x12345678
+# Testbench finished!
+# ** Note: $stop    : wb_ram_tb.v(121)
+#    Time: 265 ns  Iteration: 0  Instance: /wb_ram_tb
+# Break in Module wb_ram_tb at wb_ram_tb.v line 121
+# 0 ps
+# 278250 ps

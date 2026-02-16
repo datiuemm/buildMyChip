@@ -1,0 +1,97 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/home/datiuemm/buildChip/tb/wb_sram
+T_opt
+!s110 1771236235
+V^]6]QDoooY5Q4:9nK>Z:F2
+04 9 4 work wb_ram_tb fast 0
+=1-000ae431a4f1-6992eb8b-124d8-a1ff3
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.2_1;73
+vwb_ram
+Z3 !s110 1771236234
+!i10b 1
+!s100 bJDBcfV6hk5XlI=5XkaQW0
+IV^hYj@gfT8U@@EBf:N;RZ3
+R1
+w1771235351
+8wb_ram.v
+Fwb_ram.v
+Fwb_common.v
+!i122 0
+L0 18 190
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.2_1;73
+r1
+!s85 0
+31
+Z6 !s108 1771236234.000000
+Z7 !s107 wb_common.v|wb_ram_tb.v|wb_ram_generic.v|wb_ram.v|
+Z8 !s90 -reportprogress|300|wb_ram.v|wb_ram_generic.v|wb_ram_tb.v|
+!i113 0
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vwb_ram_generic
+R3
+!i10b 1
+!s100 bQ^]ba[GLdjjLJME[n?S13
+IAooIQ5I@WedbIjCbn7Og50
+R1
+w1771235325
+8wb_ram_generic.v
+Fwb_ram_generic.v
+!i122 0
+L0 18 32
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
+vwb_ram_tb
+R3
+!i10b 1
+!s100 iBLGWPYL5H_^Ln7WF4@fV2
+I4Ij[??GX7PL8eofj7[:hA3
+R1
+w1771236231
+8wb_ram_tb.v
+Fwb_ram_tb.v
+!i122 0
+L0 3 122
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
