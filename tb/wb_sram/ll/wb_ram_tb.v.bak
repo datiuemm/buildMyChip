@@ -64,7 +64,7 @@ module wb_ram_tb;
         wb_cyc_i <= 1'b0;
         wb_stb_i <= 1'b0;
         wb_we_i  <= 1'b0;
-        $display("WRITE: Addr=0x%b, Data=0x%h", addr, data);
+        $display("WRITE: Addr=0x%h, Data=0x%h", addr, data);
     end
     endtask
 
@@ -81,7 +81,7 @@ module wb_ram_tb;
 
         wait(wb_ack_o);
         @(posedge wb_clk_i);
-        $display("READ:  Addr=0x%b, Data=0x%h", addr, wb_dat_o);
+        $display("READ:  Addr=0x%h, Data=0x%h", addr, wb_dat_o);
         wb_cyc_i <= 1'b0;
         wb_stb_i <= 1'b0;
     end
@@ -105,16 +105,16 @@ module wb_ram_tb;
 
         // Test ghi vào các địa chỉ Byte
         // Lưu ý: adr_r[aw-1:2] sẽ lấy 0, 1, 2...
-        wb_write(32'h00000000, 32'hDEADBEEF); // Word 0
-        wb_write(32'h00000404, 32'hCAFEBABE); // Word 1
-        wb_write(32'h10000008, 32'h12345678); // Word 2
+        wb_write(32'h00000004, 32'hDEADBEEF); // Word 0
+        wb_write(32'h000002FA, 32'hCAFEBABE); // Word 1
+        wb_write(32'h10000204, 32'h12345678); // Word 2
 
         #20;
 
         // Test đọc lại
-        wb_read(32'h00000000);
-        wb_read(32'h00000404);
-        wb_read(32'h10000008);
+        wb_read(32'h00000004);
+        wb_read(32'h000002FA);
+        wb_read(32'h10000204);
 
         #50;
         $display("Testbench finished!");

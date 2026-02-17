@@ -37,16 +37,10 @@ module wb_ram
    output reg 	   wb_ack_o,
    output 	   wb_err_o,
    output [dw-1:0] wb_dat_o);
-   //parameter [aw-1:0] base_addr = 32'h10020000;
-   //parameter [aw-1:0] mem_size  = 32'h000003fc;
+
    `include "wb_common.v"
    reg [aw-1:0] 	   adr_r;
-   wire [30-1:0] 	   adr_r_n;
-   wire [7:0] 	   adr_r_n2;
-   
-   wire [30-1:0] 	   adr_n;
-   wire [7:0] 		   adr_n2;
-   
+
    wire [aw-1:0] 	   next_adr;
 
    wire 		   valid = wb_cyc_i & wb_stb_i;
@@ -59,12 +53,13 @@ module wb_ram
    wire                    new_cycle = (valid & !valid_r) | is_last_r;
 
    assign next_adr = wb_next_adr(adr_r, wb_cti_i, wb_bte_i, dw);
+
    wire [aw-1:0] 	   adr = new_cycle ? wb_adr_i : next_adr;
-	
+
    always@(posedge wb_clk_i) begin
       adr_r   <= adr;
       valid_r <= valid;
-      //Ack generationwb_err_o
+      //Ack generation
       wb_ack_o <= valid & (!((wb_cti_i == 3'b000) | (wb_cti_i == 3'b111)) | !wb_ack_o);
       if(wb_rst_i) begin
 	 adr_r <= {aw{1'b0}};
@@ -72,32 +67,11 @@ module wb_ram
 	 wb_ack_o <= 1'b0;
       end
    end
-   
-   //wire [aw-1:0] max_addr = depth;
-   //wire addr_out_of_range = (adr < base_addr) || (adr >= base_addr + mem_size);
-   
-   /*
-   reg wrap_detected;
-   always @(posedge wb_clk_i) begin
-      if (new_cycle)
-         wrap_detected <= 1'b0;
-      else if (valid && (next_adr < adr_r))
-         wrap_detected <= 1'b1;
-      
-      if (wb_rst_i) wrap_detected <= 1'b0;
-   end
-   */
-
-   //assign wb_err_o = valid && (addr_out_of_range); //|| wrap_detected);
 
    wire ram_we = wb_we_i & valid & wb_ack_o;
-   assign adr_n = adr[aw-1:2];
-   assign adr_r_n = adr_r[aw-1:2];
-   
-   assign adr_n2 = adr_n[7:0];
-   assign adr_r_n2 = adr_r_n[7:0];
+
    //TODO:ck for burst address errors
-   //assign wb_err_o =  1'b0;
+   assign wb_err_o =  1'b0;
 
    wb_ram_generic
      #(.depth(depth/4),
@@ -106,8 +80,8 @@ module wb_ram
      (.clk (wb_clk_i),
       .we  ({4{ram_we}} & wb_sel_i),
       .din (wb_dat_i),
-      .waddr(adr_r_n2),
-      .raddr (adr_n2),
+      .waddr(adr_r[aw-1:2]),
+      .raddr (adr[aw-1:2]),
       .dout (wb_dat_o));
 
 endmodule

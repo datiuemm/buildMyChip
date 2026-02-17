@@ -21,8 +21,8 @@ module wb_ram_generic
   (input clk,
    input [3:0]	 we,
    input [31:0]  din,
-   input [7:0] 	 waddr,
-   input [7:0] 	 raddr,
+   input [32-1:0] 	 waddr,
+   input [32-1:0] 	 raddr,
    output reg [31:0] dout);
 
    reg [31:0] 	 mem [0:depth-1] /* verilator public */;
@@ -30,12 +30,12 @@ module wb_ram_generic
    localparam ADDR_BITS = $clog2(depth);
 
    always @(posedge clk) begin
-      if (we[0]) mem[waddr][7:0]   <= din[7:0];
-      if (we[1]) mem[waddr][15:8]  <= din[15:8];
-      if (we[2]) mem[waddr][23:16] <= din[23:16];
-      if (we[3]) mem[waddr][31:24] <= din[31:24];
+      if (we[0]) mem[waddr[ADDR_BITS-1:0]][7:0]   <= din[7:0];
+      if (we[1]) mem[waddr[ADDR_BITS-1:0]][15:8]  <= din[15:8];
+      if (we[2]) mem[waddr[ADDR_BITS-1:0]][23:16] <= din[23:16];
+      if (we[3]) mem[waddr[ADDR_BITS-1:0]][31:24] <= din[31:24];
       
-      dout <= mem[raddr];
+      dout <= mem[raddr[ADDR_BITS-1:0]];
 end
    generate
       initial

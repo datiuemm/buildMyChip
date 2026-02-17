@@ -6,7 +6,7 @@ module wb_ram_tb;
     parameter DW = 32;
     parameter DEPTH = 1024;
     parameter AW = 32;
-    parameter DEPTH2 = 256;
+
     // Signalsa
     reg wb_clk_i = 0;
     reg wb_rst_i;
@@ -22,12 +22,9 @@ module wb_ram_tb;
     wire         wb_ack_o;
     wire         wb_err_o;
     wire [DW-1:0] wb_dat_o;
-    
-    integer i; 
-    integer error_count = 0;
 
     // Clock generation (100MHz)
-    always #0.5 wb_clk_i = ~wb_clk_i;
+    always #5 wb_clk_i = ~wb_clk_i;
 
     // DUT (Device Under Test) Instance
     wb_ram #(
@@ -102,12 +99,10 @@ module wb_ram_tb;
         wb_cti_i = 0;
         wb_cyc_i = 0;
         wb_stb_i = 0;
-        
-        $display("--- BAT DAU KIEM TRA TU DONG ---");
 
         #20 wb_rst_i = 0;
         #10;
-	/*
+
         // Test ghi vào các địa chỉ Byte
         // Lưu ý: adr_r[aw-1:2] sẽ lấy 0, 1, 2...
         wb_write(32'h00000004, 32'hDEADBEEF); // Word 0
@@ -120,30 +115,7 @@ module wb_ram_tb;
         wb_read(32'h00000004);
         wb_read(32'h000002FA);
         wb_read(32'h10000204);
-        */
-        
-        
-        for (i = 0; i < DEPTH2; i = i + 1) begin
-            wb_write(32'h10002000 + i * 4, 32'h00000000 + i);
-            //$display("Wrote add: 0x%h, Data: 0x%h", i*4, 32'h00000000 + i);
-        end
-        
-        
-        for (i = 0; i < DEPTH2; i = i + 1) begin
-            wb_read(32'h10020000 + i * 4);
-            if (wb_dat_o !== (32'h00000000 + i)) begin
-                error_count = error_count + 1;
-                $display("[LOI] Tai 0x%h | Ky vong: 0x%h | Thuc te: 0x%h", i*4, (32'h00000000 + i), wb_dat_o);
-            end
-            else begin
-            	$display("[PASSED] Tai 0x%h | Ky vong: 0x%h | Thuc te: 0x%h | error %d",32'h00000400 + i*4, (32'h00000000 + i), wb_dat_o, error_count);
-            end
-        end
-        
-        if (error_count == 0)
-                $display("PASSED");
-        else
-        	$display("FAIL");
+
         #50;
         $display("Testbench finished!");
         $stop;

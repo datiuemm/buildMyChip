@@ -10,7 +10,12 @@ R0
 R0
 R0
 R0
-!s11f MIXED_VERSIONS
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.2_1 2021.05, May 15 2021
 13
 !s112 1.1
 !i10d 8192
@@ -19,79 +24,90 @@ R0
 cModel Technology
 Z1 d/home/datiuemm/buildChip/tb/wb_sram
 T_opt
-!s110 1771236235
-V^]6]QDoooY5Q4:9nK>Z:F2
+!s110 1771345092
+VlQS@XdGX>Q<hgW6B_EIVH3
 04 9 4 work wb_ram_tb fast 0
-=1-000ae431a4f1-6992eb8b-124d8-a1ff3
-!s124 OEM100
-o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+=1-000ae431a4f1-699494c4-49c6-10bedd
+Z2 !s124 OEM100
+Z3 o-quiet -auto_acc_if_foreign -work work +acc
+Z4 tCvgOpt 0
 n@_opt
-OL;O;2021.2_1;73
-vwb_ram
-Z3 !s110 1771236234
-!i10b 1
-!s100 bJDBcfV6hk5XlI=5XkaQW0
-IV^hYj@gfT8U@@EBf:N;RZ3
+Z5 OL;O;2021.2_1;73
 R1
-w1771235351
+T_opt1
+!s110 1771345231
+V:8Ae_`3C@]D@Z^6?m<n3Q0
+04 3 4 work tb2 fast 0
+=1-000ae431a4f1-6994954f-50e52-10c128
+R2
+R3
+R4
+n@_opt1
+R5
+vtb2
+Z6 !s110 1771345230
+!i10b 1
+!s100 EMR?8WZff5>67X:zf4a_G3
+IMnHHXZOI<SkOL5PlGA^jl0
+R1
+w1771345192
+8tb2.v
+Ftb2.v
+!i122 0
+L0 3 223
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 OL;L;2021.2_1;73
+r1
+!s85 0
+31
+Z9 !s108 1771345230.000000
+Z10 !s107 wb_common.v|tb2.v|wb_ram_generic.v|wb_ram.v|
+Z11 !s90 -reportprogress|300|wb_ram.v|wb_ram_generic.v|tb2.v|
+!i113 0
+Z12 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vwb_ram
+R6
+!i10b 1
+!s100 oBJcDPJhPl:7hS0lkJ95W2
+IT0Wg`QOl]ei;ajEeBigjP2
+R1
+w1771345065
 8wb_ram.v
 Fwb_ram.v
 Fwb_common.v
 !i122 0
-L0 18 190
-Z4 VDg1SIo80bB@j0V0VzS_@n1
-Z5 OL;L;2021.2_1;73
+L0 18 216
+R7
+R8
 r1
 !s85 0
 31
-Z6 !s108 1771236234.000000
-Z7 !s107 wb_common.v|wb_ram_tb.v|wb_ram_generic.v|wb_ram.v|
-Z8 !s90 -reportprogress|300|wb_ram.v|wb_ram_generic.v|wb_ram_tb.v|
+R9
+R10
+R11
 !i113 0
-Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
+R12
+R4
 vwb_ram_generic
-R3
+R6
 !i10b 1
-!s100 bQ^]ba[GLdjjLJME[n?S13
-IAooIQ5I@WedbIjCbn7Og50
+!s100 ?aQ37O6SkG<H3IS4lZWF@2
+IEGhEUe99o[e0kg4zLL2Jm0
 R1
-w1771235325
+w1771333792
 8wb_ram_generic.v
 Fwb_ram_generic.v
 !i122 0
-L0 18 32
-R4
-R5
+L0 18 31
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
-R2
-vwb_ram_tb
-R3
-!i10b 1
-!s100 iBLGWPYL5H_^Ln7WF4@fV2
-I4Ij[??GX7PL8eofj7[:hA3
-R1
-w1771236231
-8wb_ram_tb.v
-Fwb_ram_tb.v
-!i122 0
-L0 3 122
+R10
+R11
+!i113 0
+R12
 R4
-R5
-r1
-!s85 0
-31
-R6
-R7
-R8
-!i113 0
-R9
-R2
