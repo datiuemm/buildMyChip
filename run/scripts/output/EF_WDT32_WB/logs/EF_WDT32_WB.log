@@ -1,5 +1,5 @@
 # vsim -c -voptargs="+acc" -l ./output/EF_WDT32_WB/logs/EF_WDT32_WB.log work.tb_EF_WDT32_WB 
-# Start time: 03:44:01 on Feb 20,2026
+# Start time: 13:19:22 on Feb 20,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # //  Questa Sim-64
 # //  Version 2021.2_1 linux_x86_64 May 15 2021
@@ -23,35 +23,46 @@
 # Right reset value
 # -----Test 1: Check offset of WDT & Enable & Is Running------
 # [GCLK] OK
-# [WB WRITE] addr=20010004 data=bacaffff 
+# [WB WRITE] addr=20010004 data=facaffff 
 # [RELOAD] OK
 # [WB WRITE] addr=20010008 data=deadbeef 
 # [ENABLE] OK
-# [WB READ] addr=20010000 data=bacafff7
-# [TIMER] OK AND IS RUNNING 0Xbacafff7
+# [WB READ] addr=20010000 data=facafff7
+# [WB READ] addr=20010000 data=facafff4
+# [TIMER] OK AND IS RUNNING 0Xfacafff4
+# [TIMER] OK AND IS RUNNING 0Xfacafff4
+# [WB READ] addr=20010000 data=facaff8e
+# [WB WRITE] addr=2001000c data=00000001 
+# [FEED] Check if wrong sec_key
+# [FEED] OK
+# [WB WRITE] addr=2001000c data=cafe0001 
+# [FEED] Check if right sec_key
+# [FEED] OK
+# [WB READ] addr=20010000 data=facafffe
+# [FEED] FEED OK Value 0xfacafffe
 # Reseting...
 # Right reset value
 # 
 # ----- Test 2: Check Interrupt Registers (IM, RIS, MIS, IC) -----
 # [GCLK] OFFSET OK
 # [IM] Enable IM
-# [WB WRITE] addr=2001000c data=00000001 
+# [WB WRITE] addr=20010010 data=00000001 
 # [IM] OFFSET OK
 # Setting to TO, EN = 1, REALOAD = 0x0000_0005
 # [WB WRITE] addr=20010004 data=00000005 
 # [WB WRITE] addr=20010008 data=00000001 
 # Waiting for WDT Timeout...
 # [RIS] Triggered: OK
-# [WB READ] addr=20010010 data=00000001
+# [WB READ] addr=20010014 data=00000001
 # [MIS & IRQ] Active: OK
-# [WB WRITE] addr=20010018 data=00000001 
-# [WB READ] addr=20010014 data=00000000
+# [WB WRITE] addr=2001001c data=00000001 
+# [WB READ] addr=20010018 data=00000000
 # [IC & RIS] Clear SUCCESS: OK
 # Reseting...
 # Right reset value
 # 
 # ----- Test 3: Check other applications (IM off, GCLK off) -----
-# [WB WRITE] addr=2001001c data=00000000 
+# [WB WRITE] addr=20010020 data=00000000 
 # [GCLK] NOT RUNNING
 # [WB WRITE] addr=20010004 data=cafebabe 
 # [RELOAD] OK
@@ -66,7 +77,7 @@
 # Still on test 3...
 # [GCLK] NOW CLOCK IS RUNNING
 # [IM] Disable IM
-# [WB WRITE] addr=2001000c data=00000000 
+# [WB WRITE] addr=20010010 data=00000000 
 # [IM] OFF
 # Setting to TO, EN = 1, REALOAD = 0x0000_0005
 # [WB WRITE] addr=20010004 data=00000005 
@@ -74,7 +85,7 @@
 # Waiting for WDT Timeout...
 # [RIS] Triggered: OK
 # [RIS] Triggered
-# [WB READ] addr=20010010 data=00000000
+# [WB READ] addr=20010014 data=00000000
 # [MIS & IRQ] NOT ACTIVATE: OK
 # Reseting...
 # Right reset value
@@ -88,17 +99,17 @@
 # [WB WRITE] addr=20010000 data=aaaa5555 
 # [WB READ] addr=20010000 data=00000000
 # [PASS] TIMER_REG is Read-Only. Value remained: 00000000
-# [WB READ] addr=20010014 data=00000000
+# [WB READ] addr=20010018 data=00000000
 # [RIS_REG] Original value: 00000000
 # [RIS_REG] Attempting to write junk data: aaaa5555
-# [WB WRITE] addr=20010014 data=aaaa5555 
-# [WB READ] addr=20010014 data=00000000
+# [WB WRITE] addr=20010018 data=aaaa5555 
+# [WB READ] addr=20010018 data=00000000
 # [PASS] RIS_REG is Read-Only. Value remained: 00000000
-# [WB READ] addr=20010010 data=00000000
+# [WB READ] addr=20010014 data=00000000
 # [MIS_REG] Original value: 00000000
 # [MIS_REG] Attempting to write junk data: aaaa5555
-# [WB WRITE] addr=20010010 data=aaaa5555 
-# [WB READ] addr=20010010 data=00000000
+# [WB WRITE] addr=20010014 data=aaaa5555 
+# [WB READ] addr=20010014 data=00000000
 # [PASS] MIS_REG is Read-Only. Value remained: 00000000
 # Reseting...
 # Right reset value
@@ -174,6 +185,28 @@
 # [WB WRITE] addr=2001001b data=aaaa5555 
 # [WB READ] addr=2001001b data=deadbeef
 # [Mooh] TEST PASSED BUT YOU GOT A DEAD BEEF!
+# Sorry but we don't test this offset 0x0000001c
+# [WB WRITE] addr=2001001d data=aaaa5555 
+# [WB READ] addr=2001001d data=deadbeef
+# [Mooh] TEST PASSED BUT YOU GOT A DEAD BEEF!
+# [WB WRITE] addr=2001001e data=aaaa5555 
+# [WB READ] addr=2001001e data=deadbeef
+# [Mooh] TEST PASSED BUT YOU GOT A DEAD BEEF!
+# [WB WRITE] addr=2001001f data=aaaa5555 
+# [WB READ] addr=2001001f data=deadbeef
+# [Mooh] TEST PASSED BUT YOU GOT A DEAD BEEF!
+# Reseting...
+# Right reset value
+# 
+# ----- Test 6: Reload-on-the-fly -----
+# [WB WRITE] addr=20010004 data=0000ffff 
+# [WB WRITE] addr=20010008 data=00000001 
+# [WB READ] addr=20010000 data=0000fff3
+# [WB WRITE] addr=20010004 data=00000010 
+# [TIMER] Value before reload: 0x0000fff3
+# [WB WRITE] addr=2001000c data=cafe0001 
+# [WB READ] addr=20010000 data=0000000e
+# [PASS] Reload-on-the-fly successful. Current Value: 0x0000000e
 # Reseting...
 # Right reset value
 # 
@@ -188,7 +221,7 @@
 # ----- Test 8: Zero Load Timeout -----
 # Reseting...
 # Right reset value
-# [WB WRITE] addr=2001000c data=00000001 
+# [WB WRITE] addr=20010010 data=00000001 
 # [WB WRITE] addr=20010004 data=00000000 
 # [WB WRITE] addr=20010008 data=00000001 
 # [PASS] WDT triggers IRQ immediately with Load=0
@@ -197,13 +230,13 @@
 # 
 # ----- Test 9: Back-to-back Access -----
 # [WB WRITE] addr=20010004 data=12345678 
-# [WB WRITE] addr=2001000c data=00000001 
+# [WB WRITE] addr=20010010 data=00000001 
 # [WB READ] addr=20010004 data=12345678
 # [PASS] Back-to-back transactions successful
 # 
 # 
 # -------[ALL] OK----------
-# ** Note: $finish    : ../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv(510)
-#    Time: 5125 ns  Iteration: 0  Instance: /tb_EF_WDT32_WB
-# End time: 03:44:02 on Feb 20,2026, Elapsed time: 0:00:01
+# ** Note: $finish    : ../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv(550)
+#    Time: 7145 ns  Iteration: 0  Instance: /tb_EF_WDT32_WB
+# End time: 13:19:24 on Feb 20,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0

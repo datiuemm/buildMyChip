@@ -11,18 +11,18 @@ z2
 cModel Technology
 Z0 d/home/datiuemm/buildChip/run/scripts
 T_opt
-Z1 !s110 1771533841
-V_<G8gMc2[;00gnU?@RS3^3
+!s110 1771568363
+VUmakLB4O;gjFiE[Zc=0:E0
 04 14 4 work tb_EF_WDT32_WB fast 0
-=1-000ae431a4f1-69977611-b72bc-1f814
+=1-000ae431a4f1-6997fceb-d7e1-4cf0f
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+Z1 tCvgOpt 0
 n@_opt
 OL;O;2021.2_1;73
 vef_util_gating_cell
-Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-R1
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z3 !s110 1771568362
 !i10b 1
 !s100 2L0UCQahkJ5BRHG@IIFzX2
 IlzT[?o`=zY_j6X7^X7<`B2
@@ -38,25 +38,25 @@ Z5 OL;L;2021.2_1;73
 r1
 !s85 0
 31
-Z6 !s108 1771533841.000000
+Z6 !s108 1771568362.000000
 Z7 !s107 ../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv|../../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v|../../src/wb_wdt/EF_WDT32/EF_WDT32.v|../../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v|
 Z8 !s90 -work|work|../../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v|../../src/wb_wdt/EF_WDT32/EF_WDT32.v|../../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v|-sv|../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv|
 !i113 0
 Z9 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
-vEF_WDT32
-R3
 R1
+vEF_WDT32
+R2
+R3
 !i10b 1
-!s100 :DYXmdKfncGUcS9D49<9H3
-IC6dSbOm;=MnOiMLH9[H1k2
+!s100 _0V9?0ndUKH_<[54`Vh150
+I59FGBY=VaPAlELoJLW>IW3
 S1
 R0
-w1771425138
+w1771566243
 8../../src/wb_wdt/EF_WDT32/EF_WDT32.v
 F../../src/wb_wdt/EF_WDT32/EF_WDT32.v
 !i122 0
-L0 23 31
+L0 26 33
 R4
 R5
 r1
@@ -67,21 +67,21 @@ R7
 R8
 !i113 0
 R9
-R2
+R1
 n@e@f_@w@d@t32
 vEF_WDT32_WB
+R2
 R3
-R1
 !i10b 1
-!s100 <ifGM8d>UZ_Bh>lcjeX[i1
-I7AXL_5oh1l;BI1HWl9dh^0
+!s100 fT8eUV0AO[U<3dAkL3A:20
+Ij1S=?2;P0e<RA31048mga1
 S1
 R0
-w1771514879
+w1771565741
 8../../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v
 F../../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v
 !i122 0
-L0 25 123
+L0 25 133
 R4
 R5
 r1
@@ -92,21 +92,21 @@ R7
 R8
 !i113 0
 R9
-R2
+R1
 n@e@f_@w@d@t32_@w@b
 vtb_EF_WDT32_WB
+R2
 R3
-R1
 !i10b 1
-!s100 7V5VKG7[<MQ6kZXRGbzPc3
-I1?SbN@QgGoS3@B@jE`a6I0
+!s100 f>P3Dcb1ke_R[fhJRCNLY0
+IVzZHMgmTCR@1d=72@KCZK3
 S1
 R0
-w1771533836
+w1771568352
 8../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv
 F../../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv
 !i122 0
-L0 6 512
+L0 6 552
 R4
 R5
 r1
@@ -117,5 +117,5 @@ R7
 R8
 !i113 0
 R9
-R2
+R1
 ntb_@e@f_@w@d@t32_@w@b

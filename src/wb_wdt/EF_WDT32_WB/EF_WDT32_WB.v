@@ -46,6 +46,7 @@ module EF_WDT32_WB (
   localparam RIS_REG_OFFSET = 8'h18;
   localparam IC_REG_OFFSET = 8'h1c;
   localparam GCLK_REG_OFFSET = 8'h20;
+  localparam sec_key = 16'hCAFE;
 
 //`ifdef USE_PWR_PIN
   reg [0:0] GCLK_REG;
@@ -73,24 +74,30 @@ module EF_WDT32_WB (
   wire [32-1:0] WDTLOAD;
   wire [ 1-1:0] WDTTO;
   wire [ 1-1:0] WDTEN;
-  wire [ 1-1:0] WDTEN;
+  wire [ 1-1:0] WDTFEED;
   // Register Definitions
   wire [32-1:0] timer_WIRE;
   assign timer_WIRE = WDTMR;
 
-  reg [31:0] load_REG;
-  assign WDTLOAD = load_REG;
+  reg [31:0] reload_REG;
+  assign WDTLOAD = reload_REG;
   always @(posedge clk_i or posedge rst_i)
-    if (rst_i) load_REG <= 0;
-    else if (wb_we & (adr_i[8-1:0] == reload_REG_OFFSET)) load_REG <= dat_i[32-1:0];
+    if (rst_i) reload_REG <= 0;
+    else if (wb_we & (adr_i[8-1:0] == reload_REG_OFFSET)) reload_REG <= dat_i[32-1:0];
 
-  reg [0:0] control_REG;
-  assign WDTEN = control_REG;
+  reg [0:0] enable_REG;
+  assign WDTEN = enable_REG;
   always @(posedge clk_i or posedge rst_i)
-    if (rst_i) control_REG <= 0;
-    else if (wb_we & (adr_i[8-1:0] == enable_REG_OFFSET)) control_REG <= dat_i[1-1:0];
+    if (rst_i) enable_REG <= 0;
+    else if (wb_we & (adr_i[8-1:0] == enable_REG_OFFSET)) enable_REG <= dat_i[1-1:0];
 
-  
+  reg [0:0] feed_REG;
+  assign WDTFEED = feed_REG;
+  always @(posedge clk_i or posedge rst_i)
+    if (rst_i) feed_REG <= 1'b0;
+    else if (wb_we & (adr_i[8-1:0] == feed_REG_OFFSET) & (dat_i[32-1:16] == sec_key)) feed_REG <= dat_i[1-1:0];
+    else feed_REG <= 1'b0;
+
   always @(posedge clk_i or posedge rst_i)
     if (rst_i) GCLK_REG <= 1;
     else if (wb_we & (adr_i[8-1:0] == GCLK_REG_OFFSET)) GCLK_REG <= dat_i[1-1:0];
@@ -128,13 +135,15 @@ module EF_WDT32_WB (
       .WDTMR(WDTMR),
       .WDTLOAD(WDTLOAD),
       .WDTTO(WDTTO),
-      .WDTEN(WDTEN)
+      .WDTEN(WDTEN),
+      .WDTFEED(WDTFEED)
   );
 
   assign	dat_o = 
 			(adr_i[8-1:0] == timer_REG_OFFSET)	? timer_WIRE :
-			(adr_i[8-1:0] == reload_REG_OFFSET)	? load_REG :
-			(adr_i[8-1:0] == enable_REG_OFFSET)	? control_REG :
+			(adr_i[8-1:0] == reload_REG_OFFSET)	? reload_REG :
+			(adr_i[8-1:0] == enable_REG_OFFSET)	? enable_REG :
+      (adr_i[8-1:0] == feed_REG_OFFSET)	? feed_REG :
 			(adr_i[8-1:0] == IM_REG_OFFSET)	? IM_REG :
 			(adr_i[8-1:0] == MIS_REG_OFFSET)	? MIS_REG :
 			(adr_i[8-1:0] == RIS_REG_OFFSET)	? RIS_REG :

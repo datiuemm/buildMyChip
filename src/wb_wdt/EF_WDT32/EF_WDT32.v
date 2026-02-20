@@ -25,7 +25,7 @@
 
 module EF_WDT32 (
 		input wire          clk,
-		input wire          rst_i,
+		input wire          rst_n,
 		input wire          WDTEN, // = 1 Enable
 		input wire [31:0]   WDTLOAD, //Reload Value
 		input wire			WDTFEED,
@@ -36,7 +36,6 @@ module EF_WDT32 (
 );
 
 	//assign	WDTTO = WDTEN & (WDTMR == 32'd0);
-	wire rst_n = ~rst_i;
 	// WDTimer
 	always @(posedge clk or negedge rst_n)
 	begin
