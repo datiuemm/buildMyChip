@@ -1,0 +1,121 @@
+m255
+K4
+z2
+!s99 nomlopt
+!s11f vlog 2021.2_1 2021.05, May 15 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/datiuemm/buildChip/run
+T_opt
+Z1 !s110 1771530178
+VN]C:Gjf>5ng>;oj`k]^Ul2
+04 14 4 work tb_EF_WDT32_WB fast 0
+=1-000ae431a4f1-699767c2-b793c-1a0cd
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.2_1;73
+vef_util_gating_cell
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R1
+!i10b 1
+!s100 2L0UCQahkJ5BRHG@IIFzX2
+IXHZc0R]Z5<C`B:HKziS:<2
+S1
+R0
+w1771181782
+8../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v
+F../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v
+!i122 0
+L0 1 14
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.2_1;73
+r1
+!s85 0
+31
+Z6 !s108 1771530178.000000
+Z7 !s107 ../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv|../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v|../src/wb_wdt/EF_WDT32/EF_WDT32.v|../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v|
+Z8 !s90 -work|work|../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v|../src/wb_wdt/EF_WDT32/EF_WDT32.v|../src/wb_wdt/EF_WDT32_WB/ef_util_gating_cell_stub.v|-sv|../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv|
+!i113 0
+Z9 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vEF_WDT32
+R3
+R1
+!i10b 1
+!s100 :DYXmdKfncGUcS9D49<9H3
+IOBLk5WXdkZLbF[A4M7`hC3
+S1
+R0
+w1771425138
+8../src/wb_wdt/EF_WDT32/EF_WDT32.v
+F../src/wb_wdt/EF_WDT32/EF_WDT32.v
+!i122 0
+L0 23 31
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
+n@e@f_@w@d@t32
+vEF_WDT32_WB
+R3
+R1
+!i10b 1
+!s100 <ifGM8d>UZ_Bh>lcjeX[i1
+I1J;F=m9J5WK[KRQON:z<C3
+S1
+R0
+w1771514879
+8../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v
+F../src/wb_wdt/EF_WDT32_WB/EF_WDT32_WB.v
+!i122 0
+L0 25 123
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
+n@e@f_@w@d@t32_@w@b
+vtb_EF_WDT32_WB
+R3
+R1
+!i10b 1
+!s100 ]0kcikJ9bW_O1ZAU1bBD^1
+I9=S6VcQi@JSBb?NPnn9Zd3
+S1
+R0
+w1771521486
+8../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv
+F../tb/wb_wdt/EF_WDT32_WB/tb_EF_WDT32_WB.sv
+!i122 0
+L0 6 405
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
+ntb_@e@f_@w@d@t32_@w@b

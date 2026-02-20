@@ -1,0 +1,21 @@
+# vsim -voptargs="+acc" -l ./output/EF_WDT32/logs/EF_WDT32.log work.tb_EF_WDT32 
+# Start time: 11:58:17 on Feb 20,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.tb_EF_WDT32(fast)
+# Loading work.EF_WDT32(fast)
+# WDTMR = 0x000000f7
+# -----Test Passed, WDT is running------
+# WDTTO = 0x0
+# WDTMR = 0x000000f6
+# WDTTO = 0x0
+# -----Test Passed, WDT is running Current Value 0x000000f6------
+# 
+# 
+# -----All Test Passed------
+# ** Note: $finish    : ../../tb/wb_wdt/EF_WDT32/tb_EF_WDT32.sv(253)
+#    Time: 2740 ns  Iteration: 0  Instance: /tb_EF_WDT32
+# 1
+# Break in Module tb_EF_WDT32 at ../../tb/wb_wdt/EF_WDT32/tb_EF_WDT32.sv line 253
+# End time: 11:58:46 on Feb 20,2026, Elapsed time: 0:00:29
+# Errors: 0, Warnings: 0

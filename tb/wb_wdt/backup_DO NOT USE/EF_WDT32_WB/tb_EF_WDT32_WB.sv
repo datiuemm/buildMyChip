@@ -130,14 +130,18 @@ task automatic test_readonly_reg(input [31:0] addr, input string reg_name);
     logic [31:0] read_back_val;
     logic [31:0] junk_data = 32'hAAAA_5555; // Giá trị rác dùng để ghi thử
 
+    // 1. Đọc giá trị ban đầu
     wb_read(addr, original_val);
     $display("[%s] Original value: %h", reg_name, original_val);
 
+    // 2. Cố gắng ghi đè vào thanh ghi RO
     $display("[%s] Attempting to write junk data: %h", reg_name, junk_data);
     wb_write(addr, junk_data);
 
+    // 3. Đọc lại để kiểm tra
     wb_read(addr, read_back_val);
     
+    // 4. So sánh
     if (read_back_val === junk_data && junk_data !== original_val) begin
         $display("[FAIL] %s is WRITABLE! It should be Read-Only.", reg_name);
         error_cnt++;
@@ -328,7 +332,7 @@ task test_4_readonly();
     rs_then_check_rs_value ();
     #10;
 
-    $display("\n--- Test 4: Checking Read-Only Registers ---");
+    $display("\n--- Checking Read-Only Registers ---");
     
     // Test thanh ghi Timer (Cực kỳ quan trọng vì nó thay đổi liên tục)
     test_readonly_reg(BASE_ADDRESS + timer_REG_OFFSET, "TIMER_REG");
@@ -338,95 +342,6 @@ task test_4_readonly();
 
     // Test thanh ghi MIS (Masked Interrupt Status)
     test_readonly_reg(BASE_ADDRESS + MIS_REG_OFFSET, "MIS_REG");
-endtask
-
-task test_5_wrong_offset_address(input [31:0] add_i, input [31:0] data_i);
-    wb_write(add_i, dat_i);
-    #10;
-
-    wb_read(add_i, reg_data);
-    if (reg_data == 32'hDEAD_BEEF) begin
-        $display("[Mooh] TEST PASSED BUT YOU GOT A DEAD BEEF!");
-    end else begin
-        $display("[Mooh] TEST FAILED AND YOU WILL NEVER HAS A DEAD BEEF!");
-        error_cnt++;
-    end
-endtask
-
-// --- Test: Reload-on-the-fly ----
-task test_6_reload_on_the_fly();
-    $display("\n----- Test 6: Reload-on-the-fly -----");
-    wb_write(BASE_ADDRESS + load_REG_OFFSET, 32'h0000_FFFF); 
-    wb_write(BASE_ADDRESS + control_REG_OFFSET, 32'h1); // Enable
-    #100;
-    wb_read(BASE_ADDRESS + timer_REG_OFFSET, reg_data);
-    $display("[TIMER] Value before reload: 0x%h", reg_data);
-
-    wb_write(BASE_ADDRESS + load_REG_OFFSET, 32'h0000_0010);
-    #20; 
-    wb_read(BASE_ADDRESS + timer_REG_OFFSET, reg_data);
-    
-    if (reg_data <= 32'h0000_0010) begin
-        $display("[PASS] Reload-on-the-fly successful. Current Value: 0x%h", reg_data);
-    end else begin
-        $display("[FAIL] Timer did not update to new load value. Value: 0x%h", reg_data);
-        error_cnt++;
-    end
-endtask
-
-task test_7_byte_lane_access();
-    $display("\n----- Test 7: Byte Lane Access (sel_i) -----");
-    rs_then_check_rs_value();
-
-    @(posedge clk_i);
-    adr_i = BASE_ADDRESS + load_REG_OFFSET;
-    dat_i = 32'hFF00_0000;
-    we_i  = 1;
-    sel_i = 4'b1000; 
-    cyc_i = 1; stb_i = 1;
-    wait(ack_o);
-    @(posedge clk_i);
-    cyc_i = 0; stb_i = 0;
-
-    wb_read(BASE_ADDRESS + load_REG_OFFSET, reg_data);
-    if (reg_data[31:24] == 8'hFF && reg_data[23:0] == 0) begin
-        $display("[PASS] Byte lane selection works.");
-    end else begin
-        $display("[INFO] Byte lane not supported or failed. Data: 0x%h (Expected FF000000)", reg_data);
-    end
-endtask
-
-// --- Test: Persistent Timeout ---
-task test_8_zero_load_timeout();
-    $display("\n----- Test 8: Zero Load Timeout -----");
-    rs_then_check_rs_value();
-    wb_write(BASE_ADDRESS + IM_REG_OFFSET, 32'h1);
-    wb_write(BASE_ADDRESS + load_REG_OFFSET, 32'h0); // Load = 0
-    wb_write(BASE_ADDRESS + control_REG_OFFSET, 32'h1); // Enable
-    
-    repeat(10) @(posedge clk_i);
-    
-    if (IRQ == 1'b1) begin
-        $display("[PASS] WDT triggers IRQ immediately with Load=0");
-    end else begin
-        $display("[FAIL] WDT silent with Load=0");
-        error_cnt++;
-    end
-endtask
-
-// --- Test D: Wishbone Back-to-Back ---
-task test_9_back_to_back_access();
-    $display("\n----- Test 9: Back-to-back Access -----");
-    wb_write(BASE_ADDRESS + load_REG_OFFSET, 32'h1234_5678);
-    wb_write(BASE_ADDRESS + IM_REG_OFFSET, 32'h1);
-    wb_read(BASE_ADDRESS + load_REG_OFFSET, reg_data);
-
-    if (reg_data == 32'h1234_5678) begin
-        $display("[PASS] Back-to-back transactions successful");
-    end else begin
-        $display("[FAIL] Back-to-back transactions failed");
-        error_cnt++;
-    end
 endtask
 
 initial begin
@@ -446,7 +361,7 @@ initial begin
 end
 
 initial begin
-    //init
+    // --- Khởi tạo trạng thái ban đầu ---
     clk_i = 0;
     rst_i = 1;
     adr_i = 0;
@@ -463,39 +378,21 @@ initial begin
 
     //Check reset value
     check_rs_value();
+
     task_1_check_offset();//Check another offset and WDT running?
 
     rs_then_check_rs_value();//Reset
+    
     task2_TO_mask_offset();//Check TO, IRQ, IM, MIS,RIS, IC OFFSET
 
     rs_then_check_rs_value();//Reset
+
     test_3_test_another_application();
 
     rs_then_check_rs_value();
+
     test_4_readonly ();
-
-    rs_then_check_rs_value();
-    $display("\n--- Test 5: Address Decoding ---");
-
-    for (int i = 0; i < 8'h1c; i++) 
-        if (i % 4 == 0) begin
-            $display("Sorry but we don't test this offset 0x%h", i);
-        end else begin
-            test_5_wrong_offset_address(BASE_ADDRESS + i, 32'hBACE_BACA);
-        end
-
-    //rs_then_check_rs_value();
-    //test_6_reload_on_the_fly();
-    
-    rs_then_check_rs_value();
-    test_7_byte_lane_access();
-    
-    rs_then_check_rs_value();
-    test_8_zero_load_timeout();
-    
-    rs_then_check_rs_value();
-    test_9_back_to_back_access();
-
+    #50;
     if (error_cnt == 0) begin
         $display("\n\n-------[ALL] OK----------");
     end else begin

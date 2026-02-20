@@ -1,14 +1,39 @@
+#-----Config------
+
+set PRJ_NAME "wb_wdt"
+set PRJ_ROOT "../.."
+set SRC "$PRJ_ROOT/src/$PRJ_NAME"
+set TB "$PRJ_ROOT/tb/$PRJ_NAME"
 set DUT "EF_WDT32_WB"
 
+set BUILD_DIR "./output/$DUT/build"
+set LOG_DIR   "./output/$DUT/logs"
 
-if [file exists work] {
-    vdel -all
+file mkdir $BUILD_DIR
+file mkdir $LOG_DIR
+
+#-----Default mode is REGRESSION--------
+if {![info exists mode]} { set mode "regression" }
+
+#-----LIB-------
+if [file exists $BUILD_DIR/work] {
+    vdel -all -lib $BUILD_DIR/work
 }
-vlib work
+vlib $BUILD_DIR/work
+vmap work $BUILD_DIR/work
 
-vlog $DUT.v EF_WDT32.v ef_util_gating_cell_stub.v -sv tb_$DUT.sv
+vlog -work work \
+	$SRC/EF_WDT32_WB/$DUT.v \
+	$SRC/EF_WDT32/EF_WDT32.v \
+	$SRC/EF_WDT32_WB/ef_util_gating_cell_stub.v \
+		-sv $TB/EF_WDT32_WB/tb_$DUT.sv
 
-vsim -voptargs=+acc work.tb_$DUT
+
+if { $mode == "debug" } {
+echo "--- RUNNING $DUT IN DEBUG MODE ---"
+vsim -voptargs=+acc \
+     -l "$LOG_DIR/$DUT.log" \
+     work.tb_$DUT 
 
 #add wave -r /*
 
@@ -43,3 +68,12 @@ add wave -position insertpoint  \
 sim:/tb_EF_WDT32_WB/dut/WDTTO
 
 run -all
+} else {
+echo "--- RUNNING $DUT IN REGRESSION MODE ---"
+vsim -c -voptargs=+acc \
+     -l "$LOG_DIR/$DUT.log" \
+     work.tb_$DUT 
+
+run -all
+quit -f
+}

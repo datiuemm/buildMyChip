@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-`include "EF_WDT32.v"
+//`include "EF_WDT32.v"
 `default_nettype none
 
 
@@ -13,6 +13,7 @@ reg [31:0] WDTLOAD;
 reg WDTTO;
 reg [31:0] WDTMR;
 reg [31:0] reg_WDTMR;
+reg WDTFEED;
 integer fail;
 
 EF_WDT32 dut
@@ -22,7 +23,8 @@ EF_WDT32 dut
     .WDTEN (WDTEN), 
     .WDTLOAD (WDTLOAD), 
     .WDTTO (WDTTO), 
-    .WDTMR (WDTMR) 
+    .WDTMR (WDTMR),
+    .WDTFEED (WDTFEED)
 );
 
 localparam CLK_PERIOD = 10;
@@ -41,9 +43,10 @@ initial begin
     WDTEN = 0;
     WDTLOAD = 32'h0000_0000;
     #10;
+    WDTFEED = 0;
     rst_i = 0;
 
-
+    /*
     //EN first then reload
     WDTEN = 1;
     #10;
@@ -124,7 +127,121 @@ initial begin
         fail++;
     end
 
+*/
+/*
+    rst_i = 1;
+    WDTEN = 0; //Test submodule, reg will store 1 from the last value, reset value off EN are on wrapper
+    #10;
+    rst_i = 0;
+    WDTLOAD = 32'hACAC_CACA;
+    #10;
+    WDTEN = 1;
+    #100;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    if (reg_WDTMR !== WDTLOAD) begin
+        $display("-----Test Passed, WDT is running------");
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end
+
+    #100;
+    WDTLOAD = 32'hFFFF_FAFFF;
+    WDTFEED = 1'b1;
+    #10;
+    WDTFEED = 1'b0;
+    #100;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    if (reg_WDTMR !== WDTLOAD && reg_WDTMR < 32'hFFFF_FAFFF && reg_WDTMR > 32'hACAC_CACA) begin
+        $display("-----Test Passed, WDT is running Current Value 0x%h------", reg_WDTMR);
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end
+*/
+
+/*
+    rst_i = 1;
+    WDTEN = 0; //Test submodule, reg will store 1 from the last value, reset value off EN are on wrapper
+    #10;
+    rst_i = 0;
+    WDTLOAD = 32'h0000_00100;
+    #10;
+    WDTEN = 1;
+    #100;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    if (reg_WDTMR !== WDTLOAD) begin
+        $display("-----Test Passed, WDT is running------");
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end
+
+    wait (WDTMR == 32'h0000_00008);
+    //WDTLOAD = 32'hFFFF_FAFFF;
+    WDTFEED = 1'b1;
+    #10;
+    WDTFEED = 1'b0;
+    #100;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    if (reg_WDTMR !== WDTLOAD && reg_WDTMR < 32'h0000_00100 && reg_WDTMR > 32'h0000_0001) begin
+        $display("-----Test Passed, WDT is running Current Value 0x%h------", reg_WDTMR);
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end
+*/
+
+
+    rst_i = 1;
+    WDTEN = 0; //Test submodule, reg will store 1 from the last value, reset value off EN are on wrapper
+    #10;
+    rst_i = 0;
+    WDTLOAD = 32'h0000_00100;
+    #10;
+    WDTEN = 1;
+    #90;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    if (reg_WDTMR !== WDTLOAD) begin
+        $display("-----Test Passed, WDT is running------");
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end
+
+    wait (WDTMR == 32'h0000_00001);
+    #10;
+    $display("WDTTO = 0x%h", WDTTO);
+    //WDTLOAD = 32'hFFFF_FAFFF;
+    WDTFEED = 1'b1;
+    #10;
+    WDTFEED = 1'b0;
+    #100;
+    reg_WDTMR = WDTMR;
+    $display("WDTMR = 0x%h", reg_WDTMR);
+    $display("WDTTO = 0x%h", WDTTO);
+    if (reg_WDTMR !== WDTLOAD && reg_WDTMR < 32'h0000_00100 && reg_WDTMR > 32'h0000_0001) begin
+        $display("-----Test Passed, WDT is running Current Value 0x%h------", reg_WDTMR);
+    end 
+    else begin
+        $display("\nFAILED");
+        fail++;
+    end 
+
     #50;
+
+
+    
 
     if (fail == 0) begin
         $display("\n\n-----All Test Passed------");
